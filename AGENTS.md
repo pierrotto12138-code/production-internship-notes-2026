@@ -244,7 +244,7 @@ RAPID 程序**存在两处**，**各存各的**，靠手动同步对齐：
 
 **时间 / 地点 / 方式 / 内容 / 问题 / 收获**
 
-> 撰写要求原文见 `实习日志\README_撰写要求.md`（两个实训各有一份，内容基本相同；视觉版多一行"完整报告见根目录 docx"）。
+> 撰写要求原文见 `实习日志\README_撰写要求.md`（两个实训各有一份，内容基本相同；视觉版多一行"完整报告见 `报告\` 下 docx"）。
 > **日志最终要手写上交**，所以内容要"条理清晰、内容详实、层次清楚"。
 
 ### 6.3 常用地点与方式（写日志时用）
@@ -262,9 +262,13 @@ RAPID 程序**存在两处**，**各存各的**，靠手动同步对齐：
 ├── AGENTS.md                       ← 本文件（给 AI 的交接说明）
 ├── LOCAL_NOTES.md                  ← ⚠️ 本机专属备忘（外部工程路径/控制器状态；分享版剔除）
 ├── 资源说明.md                     ← 第三方资源（软件/手册）去哪获取
-├── tools_verifylinks.ps1           ← 链接校验（只读，见 8.5）
-├── tools_checkpathrefs.ps1         ← 正文路径引用校验（见 8.5）
-├── tools_verifylinks.py            ← 链接校验跨平台版（无 pwsh 环境的等价实现）
+├── 报告\                           ← 完整实习报告（docx/pdf）+ 生成工具\
+│   └── 生成工具\                    ← python-docx 装配脚本、模板与备份（维护用）
+├── 工具\                           ← 校验与生成脚本
+│   ├── tools_verifylinks.ps1        ← 链接校验（只读，见 8.5）
+│   ├── tools_checkpathrefs.ps1      ← 正文路径引用校验（见 8.5）
+│   ├── tools_verifylinks.py         ← 链接校验跨平台版（无 pwsh 环境的等价实现）
+│   └── tools_genmanualindex.py      ← 手册 目录索引.md 生成
 ├── 配图\                           ← 全部笔记配图（勿删、勿改名；**README.md 内有 DayN↔日期映射表**）
 │   ├── Day1_images\ (49)           ← 机器视觉实训**全部 5 天**（非"第 1 天"）
 │   ├── Day2_images\ (8) / Day3_images\ (14) / Day4_images\ (10) / Day5_images\ (4)
@@ -326,14 +330,14 @@ RAPID 程序**存在两处**，**各存各的**，靠手动同步对齐：
 >   工具脚本改用 `$PSScriptRoot` 自定位（详见 8.5）——**改文件夹名、换机器都不受影响**。
 >   （注意：指向工作区**之外**的 `%USERPROFILE%\Documents\RobotStudio\...`、`<RobotStudio安装目录>\...` 属真实位置，**保留绝对路径**并在行内注明。）
 >
-> **链接校验**：直接用 8.5 的 `tools_verifylinks.ps1`（只读，可反复跑）。
+> **链接校验**：直接用 8.5 的 `工具\tools_verifylinks.ps1`（只读，可反复跑）。
 > ⚠️ **PowerShell 的坑**：`@(@('a','b'))` 单元素嵌套数组会被展平，用哈希表才稳（本次踩过，第一次跑出 136 处假断链）。
 > ⚠️ **路径改写脚本只可跑一次**：它按"旧路径→新路径"映射改写，重复执行会把已正确的位置再降一层（本次踩过，第二次跑出大量假断链，靠备份还原）。
 
 ### 7.2 ★ 2026-09-18 第二批整理（一致性 review 修订）
 
 新建 `LOCAL_NOTES.md`（机器专属内容自第三节/8.3/5.2/5.3 拆出，分享版须剔除，已入 8.6 排除表）、`配图\README.md`（DayN↔日期真实映射：
-此前"按天分目录"的说法不准确，Day1 实为视觉全部 5 天）、`tools_verifylinks.py`（跨平台校验，ps1/py 同步修补两类链接盲区）、
+此前"按天分目录"的说法不准确，Day1 实为视觉全部 5 天）、`工具\tools_verifylinks.py`（跨平台校验，ps1/py 同步修补两类链接盲区）、
 21 本手册的 `目录索引.md`（8.1）；根目录 **git 化**（历史改动以 `git log` 为准）；51 篇笔记补 front matter（6.1）。
 两处重命名：`Day1_工业视觉工装板产品定位报告.md` → `260907_Day1_工装板产品定位报告.md`、
 `2026-09-14_完成机器操作.md` → `2026-09-14_真机Offs矩形轨迹.md`（引用均已更新）；`RAPID代码\` 3 个演进稿移入 `_历史版本\`（活跃 13 / 存档 3）。
@@ -346,9 +350,10 @@ RAPID 程序**存在两处**，**各存各的**，靠手动同步对齐：
 - **体例修复**：`Day_0907` 补齐"实习时间/地点/方式/问题"（六项齐全，可手写上交）；`Day_0910` 修复 26 处转换残留（元信息拆行、`&#x20;` 缩进、引用块断句），是唯一渲染崩坏的文件。
 - **精简/整合**：`Day_0907` 第三节 40 行→12 行（细节回指两篇学习记录）；50024 机制收敛到《奇异点规避》第四节（另两处改一行 + 链接）；ISO 8859-1 对照表收敛到《人机交互》第五节；删除重复小节 1 处（0915 人机交互 §4）。
 - **口径统一**：知识库"14 章"含第 1 章入门；`_第三方资源` 统一表述为"分享版不含"（README / 资源说明）；手册 HTML 数量 13k→3265；README 实习地点与根目录名；机器人 README 的素材路径注明在 `_第三方资源\参考素材\`。
-- **校验**：`tools_verifylinks.ps1` 80 篇 / 255 处链接（110 图）/ 0 断链；`tools_checkpathrefs.ps1` 76 处全部存在。
+- **目录整理**：根目录的校验脚本移入 `工具\`，报告 docx/pdf 与生成管线移入 `报告\`（管线在 `报告\生成工具\`）；脚本改为按"自身所在目录的上一级"定位仓库根。
+- **校验**：`工具\tools_verifylinks.ps1` 80 篇 / 255 处链接（110 图）/ 0 断链；`工具\tools_checkpathrefs.ps1` 76 处全部存在。
 
-> **完整报告也已同步修正**：`_report_work/content.py`（及 `content_ls.py`）里"NetAssist 客户端 / VM 服务端"改为"**NetAssist 服务端 / VM 客户端**"、"Offs 生成四个角点"改为"**3 条 Offs + 其余三个角点**"；根目录 docx 用 python-docx 原地替换文本，再用 **Word 2021** 重新导出 PDF（**21 页，与旧版一致**）。⚠️ 不要用 LibreOffice 导出这份报告——同一 docx 会变 25 页（字体度量不同），破坏目录页码。
+> **完整报告也已同步修正**：`报告\生成工具\content.py`（及 `content_ls.py`）里"NetAssist 客户端 / VM 服务端"改为"**NetAssist 服务端 / VM 客户端**"、"Offs 生成四个角点"改为"**3 条 Offs + 其余三个角点**"；`报告\` 下的 docx 用 python-docx 原地替换文本，再用 **Word 2021** 重新导出 PDF（**21 页，与旧版一致**）。⚠️ 不要用 LibreOffice 导出这份报告——同一 docx 会变 25 页（字体度量不同），破坏目录页码。
 
 ---
 
@@ -366,7 +371,7 @@ rg -o -N '.{60}Offs.{80}' <file>      # 看上下文
 ```
 
 **先查分册目录索引**：每本手册目录下有 `目录索引.md`（章节名 → `docN.html` 对照，2026-09-18 由
-`toc.hhc` 生成，重生成命令见 `tools_genmanualindex.py` 头部注释），**别对 3000+ 个 docN.html 盲扫**（21 本共 3265 个）。
+`toc.hhc` 生成，重生成命令见 `工具\tools_genmanualindex.py` 头部注释），**别对 3000+ 个 docN.html 盲扫**（21 本共 3265 个）。
 提取正文纯文本可用 `pwsh` 读 UTF-8 再正则去标签，或 `python -c` 同法（本 agent 用过此法）。
 
 ### 8.2 手册与主题对照（机器人实训）
@@ -388,10 +393,10 @@ perl -ne 'exit 1 if /[^\x00-\x7F]/' <f> && echo OK || echo "含非ASCII"
 
 ### 8.5 校验脚本（均自动定位仓库根，可反复跑）
 
-**① `tools_verifylinks.ps1` —— 链接校验（主要手段）**
+**① `工具\tools_verifylinks.ps1` —— 链接校验（主要手段）**
 
 ```bash
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools_verifylinks.ps1
+pwsh -NoProfile -ExecutionPolicy Bypass -File 工具\tools_verifylinks.ps1
 # 输出：检查 N 个 .md；相对链接 M 处（其中图片 K 处）→ 全部可达 / 列出断链
 ```
 
@@ -400,19 +405,19 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File tools_verifylinks.ps1
 **基线（2026-10-17 实测）**：80 个 .md、255 处相对链接（含 110 处配图）、0 断链。
 *数字随整理浮动，以脚本实时输出为准；文档里引用基线时务必带实测日期。*
 
-**② `tools_checkpathrefs.ps1` —— 正文路径引用校验（补盲区）**
+**② `工具\tools_checkpathrefs.ps1` —— 正文路径引用校验（补盲区）**
 
 ```bash
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools_checkpathrefs.ps1
+pwsh -NoProfile -ExecutionPolicy Bypass -File 工具\tools_checkpathrefs.ps1
 # 输出：检查「反引号内仓库路径」N 处 → 全部存在 / 列出不存在的
 ```
 
-⚠️ **为什么需要它**：`tools_verifylinks.ps1` 只查「方括号 + 圆括号」的链接写法，**查不到正文里用反引号或纯文本写出的路径**——
+⚠️ **为什么需要它**：`工具\tools_verifylinks.ps1` 只查「方括号 + 圆括号」的链接写法，**查不到正文里用反引号或纯文本写出的路径**——
 这正是当初"机器人 README 引用了分享版不存在的 `_第三方资源\...`"没被发现的盲区（外部审计指出）。
 本脚本专门查这类写法，会自动跳过通配符、模板占位（`DayN`/`MMDD`）与 7.1 的旧路径对照表。
 （基线 2026-10-17 实测：76 处、全部存在。）
 
-**③ `tools_verifylinks.py` —— ①的跨平台等价实现**（`python tools_verifylinks.py`）
+**③ `工具\tools_verifylinks.py` —— ①的跨平台等价实现**（`python 工具/tools_verifylinks.py`）
 无 pwsh 环境（macOS/Linux agent）用它；含"链接带标题文字/尖括号路径"盲区处理（ps1 已同步）。
 两版输出一致（2026-09-18 交叉实测）。
 
@@ -432,8 +437,8 @@ AGENTS.md            给 AI 的交接说明（人可读性的关键之一）
 机器视觉实训\学习记录\ 实习日志\ VisionMaster知识库\
 机器人实训\           （含 学习记录\ 实习日志\ RAPID代码\ 工作站归档\）
 汇报材料\            实训汇报 PPT
-专业生产实习报告_×××_2305××××××.docx / .pdf   完整实习报告（根目录；如只需精简分享可只带 PDF）
-tools_verifylinks.ps1 / tools_checkpathrefs.ps1 / tools_verifylinks.py   校验脚本（可选，各几 KB）
+报告\                完整实习报告 docx / pdf（含 生成工具\，维护用；分享版可只带 docx/pdf）
+工具\                校验脚本（可选，各几 KB）
 ```
 
 **应排除**
@@ -444,7 +449,7 @@ tools_verifylinks.ps1 / tools_checkpathrefs.ps1 / tools_verifylinks.py   校验�
 | `LOCAL_NOTES.md` | 只对原作者机器成立（外部工程路径/控制器 ID/本机软件状态） |
 | `机器视觉实训\作业工程\` | 约 182 MB（工程内嵌图像）——**如需保留请单独确认**，否则分享包约 49 MB |
 
-> ⚠️ **打包前必做**：先跑一次 `tools_verifylinks.ps1` 确认无断链；打包后**在解压出的副本里再跑一次**
+> ⚠️ **打包前必做**：先跑一次 `工具\tools_verifylinks.ps1` 确认无断链；打包后**在解压出的副本里再跑一次**
 > （重命名成任意文件夹名），确认链接依然全部可达——配图用的是相对路径，整包搬走才不会裂图。
 > 2026-10-17 实测：分享版口径副本（排除下表三项）全部链接可达（完整版 80 篇 / 255 处）；
 > ② 仅剩 7 处反引号提及 `_第三方资源\...`——**这是设计内的"完整版读者记录"文字，不是断链，勿当错误修**。
@@ -460,7 +465,7 @@ tools_verifylinks.ps1 / tools_checkpathrefs.ps1 / tools_verifylinks.py   校验�
 5. **用户很在意 token 效率**——本文件就是为此而写：**能读文档就别重新摸索**。回答时直接给结论，不必复述探索过程
 6. 用户措辞精确（如"准备整合"≠"整合"），**不要过度解读**
 7. **动到目录结构 / 批量改链接时**：仓库已 git 化——动手前 `git status` 确认工作区干净，出问题用 `git diff` 查看、`git checkout -- <文件>` 回退；
-   改完**必须跑 `tools_verifylinks.ps1` 全量校验**（见 8.5）。2026-09-18 那次重构改了 236 处链接，靠校验才敢确认无断裂。
-8. **分享 / 交付前**：跑 `tools_verifylinks.ps1` 确认无断链，并在**改名后的副本**里再跑一次（见 8.6 的打包清单与核对步骤）。
+   改完**必须跑 `工具\tools_verifylinks.ps1` 全量校验**（见 8.5）。2026-09-18 那次重构改了 236 处链接，靠校验才敢确认无断裂。
+8. **分享 / 交付前**：跑 `工具\tools_verifylinks.ps1` 确认无断链，并在**改名后的副本**里再跑一次（见 8.6 的打包清单与核对步骤）。
 
 > 有疑问就问用户。宁可多问一句，也别写错记录。

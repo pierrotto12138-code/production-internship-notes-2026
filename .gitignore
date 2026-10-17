@@ -21,6 +21,15 @@ Desktop.ini
 
 # 整理期临时脚本与输出
 .tmp_*
+__pycache__/
 
 # 外部审查工具（mimosa）的本地状态
 .mimosa/
+
+# 报告成品与备份（体积大；随文件夹分享，不入 git）
+报告/*.doc
+报告/*.docx
+报告/*.pdf
+报告/生成工具/*.pdf
+报告/生成工具/*.docx
+报告/生成工具/backup_*

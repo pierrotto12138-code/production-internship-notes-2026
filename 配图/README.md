@@ -46,4 +46,4 @@ Day2_images\image-0913_rs_station_preview.png    Day4_images\image-0915_draw3cir
 | `机器视觉实训\学习记录\`、`实习日志\`、`VisionMaster知识库\`、`机器人实训\学习记录\`、`实习日志\` | `../../配图/DayN_images/xxx.png`（**2 层**） |
 | `VisionMaster知识库\02_入门\` 等再下一级的子目录 | `../../../配图/…`（**3 层**） |
 
-> **按笔记实际位置数层数**，别照抄别处。改完跑根目录 `tools_verifylinks.ps1`（或 `.py`）即可确认无裂图。
+> **按笔记实际位置数层数**，别照抄别处。改完跑 `工具\tools_verifylinks.ps1`（或 `.py`）即可确认无裂图。

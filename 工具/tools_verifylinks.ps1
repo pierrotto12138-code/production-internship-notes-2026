@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
-# 仓库根 = 本脚本所在目录（不写死绝对路径，换位置/改目录名都能用）
-$root = $PSScriptRoot
+# 仓库根 = 本脚本所在目录的上一级（脚本统一放在 工具\ 下；不写死绝对路径，换位置/改目录名都能用）
+$root = Split-Path -Parent $PSScriptRoot
 if (-not $root) { $root = (Get-Location).Path }
 
 function Join-Norm([string]$base, [string]$rel) {

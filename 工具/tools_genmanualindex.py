@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 tools_genmanualindex.py —— 为 _第三方资源\\ 下 21 本 ABB 手册各生成一份 `目录索引.md`
-（章节名 → docN.html 对照表），把"对 13k 个 HTML 盲扫"变成"先查目录再定点打开"。
+（章节名 → docN.html 对照表），把"对上万个 HTML 盲扫"变成"先查目录再定点打开"。
 
 重生成命令（在仓库根或任意位置均可，路径自定位）：
-    python tools_genmanualindex.py
+    python 工具/tools_genmanualindex.py
 
 说明：
 - 目录来源：各手册的 toc.hhc（CHM 反编译目录，已确认为 UTF-8）；
@@ -18,7 +18,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 HELP_DIRS = [ROOT / '_第三方资源' / '帮助文档_中文', ROOT / '_第三方资源' / '帮助文档_英文']
 
 NAME_RX = re.compile(r'<param\s+name="Name"\s+value="([^"]*)"', re.I)

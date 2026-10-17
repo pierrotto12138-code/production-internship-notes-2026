@@ -8,14 +8,14 @@ tools_verifylinks.py —— tools_verifylinks.ps1 的跨平台等价实现（只
 支持链接盲区写法：[t](路径 "标题") 与 [t](<带空格路径>)。
 
 用法：
-    python tools_verifylinks.py            # 在任意 cwd 都可，仓库根 = 本脚本所在目录
+    python 工具/tools_verifylinks.py       # 任意 cwd 均可，仓库根 = 工具 目录的上一级
 退出码：0 全部可达 / 1 有断链。
 """
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RX = re.compile(r'(!?\[[^\]]*\]\()([^)]+)(\))')
 SCHEME = re.compile(r'^[a-zA-Z][a-zA-Z0-9+.\-]*://')
 

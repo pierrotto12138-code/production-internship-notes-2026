@@ -1,5 +1,6 @@
 $ErrorActionPreference = 'Stop'
-$root = $PSScriptRoot
+# 仓库根 = 本脚本所在目录的上一级（脚本统一放在 工具\ 下）
+$root = Split-Path -Parent $PSScriptRoot
 if (-not $root) { $root = (Get-Location).Path }
 
 # ============================================================
