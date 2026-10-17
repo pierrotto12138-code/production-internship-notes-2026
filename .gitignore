@@ -18,3 +18,9 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 *.tmp
+
+# 整理期临时脚本与输出
+.tmp_*
+
+# 外部审查工具（mimosa）的本地状态
+.mimosa/
