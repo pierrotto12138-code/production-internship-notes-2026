@@ -2,7 +2,7 @@
 
 > ⚠️ **免责声明**：本仓库全部内容为基于个人学习记录**由 AI 自主整合**的版本，**未经人工优化**，仅供学习内容参考；如照搬全抄造成课程成绩损失，概不负责。
 
-> 本目录集中存放**全部笔记的配图**，笔记用相对路径引用（`../../配图/…`）。
+> 本目录集中存放**全部笔记的配图**（外加 README 首屏图 `hero.jpg`，见第四节），笔记用相对路径引用（`../../配图/…`）。
 > **请勿删除或改名任何图片与子目录**——改名 = 全库上百处引用断裂。
 
 ---
@@ -39,6 +39,9 @@ Day1_images\image-0910_vertex_run.png            Day1_images\image-script_variab
 Day2_images\image-0913_rs_station_preview.png    Day4_images\image-0915_draw3circles_ppt.jpg
 ```
 
+> 注：`image-0910_vertex_result.png` 现已作为 README 首屏图 `hero.jpg` 的素材（见第四节），
+> 但**原图仍无笔记直接引用**，所以保留在本清单里、不算孤儿。
+
 ## 三、引用深度速查（写新笔记时用）
 
 | 笔记所在位置 | 正确前缀 |
@@ -47,3 +50,11 @@ Day2_images\image-0913_rs_station_preview.png    Day4_images\image-0915_draw3cir
 | `VisionMaster知识库\02_入门\` 等再下一级的子目录 | `../../../配图/…`（**3 层**） |
 
 > **按笔记实际位置数层数**，别照抄别处。改完跑 `工具\tools_verifylinks.ps1`（或 `.py`）即可确认无裂图。
+
+## 四、README 首屏图 `hero.jpg`（2026-10-26 新增）
+
+`hero.jpg`（1600×640，约 150 KB）是 README 顶部的横幅，**只由 `README.md` 引用，任何笔记都不引用**。
+
+- 素材：左 `Day1_images\image-0910_vertex_result.png`（齿轮顶点检测结果）+ 右 `Day2_images\image-0913_rs_path10_contour.png`（RobotStudio 轨迹仿真）；
+- 生成：`python 工具\tools_makehero.py`（脚本里写死了画布尺寸、留白与输出路径，改素材后重跑即可）；
+- **不要手工改名或覆盖**：`README.md` 用相对路径 `配图/hero.jpg` 引用，脚本输出也是这个路径。
