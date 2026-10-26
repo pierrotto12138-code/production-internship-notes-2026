@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""原地修正×××报告目录页码缓存（只改页码，不动其余格式）。
+"""原地修正另一位同学报告目录页码缓存（只改页码，不动其余格式）。
 按当前渲染实测的正文页码回填。"""
 import re
 import sys
@@ -12,8 +12,8 @@ import pymupdf
 from docx import Document
 from docx.oxml.ns import qn
 
-DOCX = str(ROOT / "报告" / "专业生产实习报告_×××_2306××××××.docx")
-PDF = str(HERE / "专业生产实习报告_×××_2306××××××.pdf")
+DOCX = str(ROOT / "报告" / "另一位同学报告_脱敏.docx")
+PDF = str(HERE / "另一位同学报告_脱敏.pdf")
 
 d = pymupdf.open(PDF)
 foot = {}

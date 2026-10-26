@@ -15,7 +15,7 @@ from docx import Document
 from docx.oxml.ns import qn
 from lxml import etree
 
-PATH = str(ROOT / "报告" / "专业生产实习报告_×××_2305××××××.docx")
+PATH = str(ROOT / "报告" / "专业生产实习报告_已脱敏.docx")
 
 # 目录条目 -> 新页码（按用户修改后的排版实测：物理页脚码）
 NEW_PAGES = {

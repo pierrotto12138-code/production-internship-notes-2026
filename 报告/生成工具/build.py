@@ -28,7 +28,7 @@ from docx.shared import Cm, Pt
 from docx.text.paragraph import Paragraph
 
 TPL = str(HERE / "实习报告模板 (2)(1).docx")
-OUT_DOCX = sys.argv[2] if len(sys.argv) > 2 else str(ROOT / "报告" / "专业生产实习报告_×××_2305××××××.docx")
+OUT_DOCX = sys.argv[2] if len(sys.argv) > 2 else str(ROOT / "报告" / "专业生产实习报告_已脱敏.docx")
 IMG_BASE = str(ROOT) + "/"
 
 pages = getattr(C, "PAGES", {})

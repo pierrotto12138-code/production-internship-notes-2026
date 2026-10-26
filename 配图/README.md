@@ -58,3 +58,6 @@ Day2_images\image-0913_rs_station_preview.png    Day4_images\image-0915_draw3cir
 - 素材：左 `Day1_images\image-0910_vertex_result.png`（齿轮顶点检测结果）+ 右 `Day2_images\image-0913_rs_path10_contour.png`（RobotStudio 轨迹仿真）；
 - 生成：`python 工具\tools_makehero.py`（脚本里写死了画布尺寸、留白与输出路径，改素材后重跑即可）；
 - **不要手工改名或覆盖**：`README.md` 用相对路径 `配图/hero.jpg` 引用，脚本输出也是这个路径。
+
+> **隐私处理（2026-10-26）**：`Day3_images/image-0914_real_cell.jpg` 中两处背景人脸已做像素化；
+> 其余配图为软件截图或设备特写，未发现可辨识人脸。若后续新增现场照片，请先检查人脸与屏幕上的姓名。
