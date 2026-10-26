@@ -372,10 +372,10 @@ RAPID 程序**存在两处**，**各存各的**，靠手动同步对齐：
 
 - **README 重排**：一句话定位 + 首屏横幅 `配图/hero.jpg`（1600×640，约 150 KB，由 `工具/tools_makehero.py` 从两张已有截图合成）+ 8 条 TOC；免责声明从标题下方移到文末「声明」节；新增「许可」节；目录树补 `LICENSE`、`hero.jpg` 与报告口径。
 - **许可**：新建 `LICENSE`（MIT，覆盖 `.mod`/`.cs`/`工具/` 脚本）与 `LICENSE-docs.md`（CC BY-NC-SA 4.0，覆盖笔记、日记、报告、配图），README 末尾「许可」说明两者边界与第三方内容归属。
-- **隐私打码（2026-10-26 同日追加）**：全库姓名→`×××`、学号→`2305××××××` / `2306××××××`、班级→`测控××××`、老师→`贾老师 / 陆院长`、控制器名改为通用编号 `260913System1`；`LICENSE` 版权人改为 GitHub 账号 `pierrotto12138-code`；PPT 末页"汇报人"与文档属性同步打码；`配图\Day3_images\image-0914_real_cell.jpg` 两处背景人脸已像素化。`content.py` / `content_ls.py` 的 `META` 默认值即脱敏值，**真实姓名/学号/班级只记在 `LOCAL_NOTES.md`**（不随包）。
+- **隐私打码（2026-10-26 同日追加）**：全库姓名→`×××`、学号→`2305××××××` / `2306××××××`、班级→`测控××××`、老师→`贾老师 / 陆院长`、控制器名改为通用编号 `260913System1`；`LICENSE` 版权人改为 GitHub 账号 `pierrotto12138-code`；PPT 封面"汇报人/小组成员"与文档属性同步打码；`配图\Day3_images\image-0914_real_cell.jpg` 两处背景人脸已像素化。`content.py` / `content_ls.py` 的 `META` 默认值即脱敏值，**真实姓名/学号/班级只记在 `LOCAL_NOTES.md`**（不随包）。
 - **报告口径**：`报告\` 下改为**已脱敏**版 `专业生产实习报告_已脱敏.docx / .pdf`（Word 重新替换并导出，21 页，目录页码不变）；含真实信息的原件与旧备份移到 `_第三方资源\个人存档_原始报告\`（不随包）。docx/pdf 仍不入 git（体积原因），分享包可直接带已脱敏版。
 - **文档同步**：`配图/README.md` 增第四节（hero 生成说明，并注明 `image-0910_vertex_result.png` 只是 hero 素材、不算孤儿）；`工具/` 增 `tools_makehero.py`；`机器视觉实训/实习日志/README_撰写要求.md` 的报告指向改为"已脱敏版，不入 git"。
-- **校验**：`tools_verifylinks.ps1` 81 篇 / 261 处链接（111 图）/ 0 断链；`tools_checkpathrefs.ps1` 96 处全部存在（2026-10-26 实测）。
+- **校验**：`tools_verifylinks.ps1` 81 篇 / 261 处链接（111 图）/ 0 断链；`tools_checkpathrefs.ps1` 100 处全部存在（2026-10-26 实测）。
 
 ---
 
@@ -437,7 +437,7 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File 工具\tools_checkpathrefs.ps1
 ⚠️ **为什么需要它**：`工具\tools_verifylinks.ps1` 只查「方括号 + 圆括号」的链接写法，**查不到正文里用反引号或纯文本写出的路径**——
 这正是当初"机器人 README 引用了分享版不存在的 `_第三方资源\...`"没被发现的盲区（外部审计指出）。
 本脚本专门查这类写法，会自动跳过通配符、模板占位（`DayN`/`MMDD`）与 7.1 的旧路径对照表。
-（基线 2026-10-26 实测：96 处、全部存在。）
+（基线 2026-10-26 实测：100 处、全部存在。）
 
 **③ `工具\tools_verifylinks.py` —— ①的跨平台等价实现**（`python 工具/tools_verifylinks.py`）
 无 pwsh 环境（macOS/Linux agent）用它；含"链接带标题文字/尖括号路径"盲区处理（ps1 已同步）。
